@@ -10,7 +10,7 @@ function agregarAmigo(){
     //obtengo el valor del input
     let nombreAmigo = document.getElementById('amigo').value.trim();
 
-    if(validarInputVacio(nombreAmigo) == true){
+    if(nombreAmigo == ""){
         //si esta vacio se envia un mensaje
         alert('Por favor, inserte un nombre');
     }else{
@@ -23,28 +23,19 @@ function agregarAmigo(){
     return;
 }
 
-//funcion para validar si el input tiene texto o esta vacio
-function validarInputVacio(texto){
-    if(texto == ""){
-        return true;
-    }else{
-        return false;
-    }
-}
-
 //funcion para limpiar el input
 function limpiarInput() {
     document.getElementById('amigo').value = "";
 }
 
-//funcion que agrega nobres a la lista
+//funcion que agrega nombres a la lista
 function agregarNombreLista() {
+    
     let listaAmigos = document.getElementById('listaAmigos');
-    listaAmigos.innerHTML = "";
+    let nuevoAmigo = amigos[amigos.length - 1]; // Último amigo agregado
+    
+    let li = document.createElement('li');
+    li.textContent = nuevoAmigo;
+    listaAmigos.appendChild(li);
 
-    amigos.forEach((amigo) => {
-        let li = document.createElement('li');
-        li.textContent = amigo;
-        listaAmigos.appendChild(li);
-    });
 }
